@@ -1,0 +1,22 @@
+{
+  "name": "jamstack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dc154/JAMStack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dc154/JAMStack/issues"
+  },
+  "homepage": "https://github.com/dc154/JAMStack#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}

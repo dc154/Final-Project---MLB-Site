@@ -20,10 +20,21 @@ nav ul {
   padding: 0;
   list-style: none;
   display: flex;
+  justify-content: space-around;
 }
 
 nav ul a {
   padding: 0.5rem 1rem;
+}
+
+nav a:hover,
+.p-home .t-home a,
+.p-about .t-about a,
+.p-pictures .t-pictures a,
+.p-contact .t-contact a {
+  background-color: #007eb6;
+  color: #fff;
+  border-radius: 4px;
 }
 
 .content {
