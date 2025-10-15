@@ -70,3 +70,15 @@ button {
   width: 60%;
   padding: 1rem;
 }
+
+@media (min-width: 480px) {
+  .stories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+  }
+}
+
+.stories .item {
+  border-bottom: 1px dashed #aaa;
+}
