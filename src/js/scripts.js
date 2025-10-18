@@ -101,7 +101,9 @@ if (document.querySelector('.p-home')) {
 
 // ====== SCHEDULE PAGE ======
 function getSchedule() {
-    const endpoint = 'https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=2025-03-01&endDate=2025-11-01';
+    // Limit to September 1 - November 1, 2025
+    const endpoint = 'https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=2025-09-01&endDate=2025-11-01';
+
     fetch(endpoint)
         .then(res => res.json())
         .then(data => showSchedule(data.dates))
@@ -109,6 +111,11 @@ function getSchedule() {
 }
 
 function showSchedule(dates) {
+    if (!dates || dates.length === 0) {
+        document.querySelector(".schedule").innerHTML = "<p>No games scheduled for September through November 2025.</p>";
+        return;
+    }
+
     const html = dates.map(day => {
         const games = day.games.map(game => {
             const gameDate = new Date(game.gameDate);
@@ -142,13 +149,16 @@ function showSchedule(dates) {
     document.querySelector(".schedule").innerHTML = html;
 }
 
+// Initialize only on schedule page
 if (document.body.classList.contains('p-schedule')) {
     getSchedule();
 }
 
 
+
 //======= Results Page ========
-const resultsEndpoint = 'https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=2025-03-01&endDate=2025-11-01';
+// Limit results to September 1 - November 1, 2025
+const resultsEndpoint = 'https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=2025-09-01&endDate=2025-11-01';
 
 function getResults() {
     fetch(resultsEndpoint)
@@ -158,25 +168,35 @@ function getResults() {
 }
 
 function showResults(dates) {
+    if (!dates || dates.length === 0) {
+        document.querySelector(".results").innerHTML = "<p>No game results found for September through November 2025.</p>";
+        return;
+    }
+
     // Flatten all games into one array
-    const allGames = dates.flatMap(day => day.games.map(game => {
-        const awayScore = game.teams.away.score ?? '-';
-        const homeScore = game.teams.home.score ?? '-';
-        const winner = awayScore > homeScore ? game.teams.away.team.name :
-            homeScore > awayScore ? game.teams.home.team.name :
-                'Tie';
-        return {
-            date: day.date,
-            away: game.teams.away.team.name,
-            home: game.teams.home.team.name,
-            awayScore,
-            homeScore,
-            winner
-        };
-    }));
+    const allGames = dates.flatMap(day =>
+        day.games.map(game => {
+            const awayScore = game.teams.away.score ?? '-';
+            const homeScore = game.teams.home.score ?? '-';
+            const winner =
+                awayScore > homeScore
+                    ? game.teams.away.team.name
+                    : homeScore > awayScore
+                        ? game.teams.home.team.name
+                        : 'Tie';
+            return {
+                date: day.date,
+                away: game.teams.away.team.name,
+                home: game.teams.home.team.name,
+                awayScore,
+                homeScore,
+                winner
+            };
+        })
+    );
 
     if (allGames.length === 0) {
-        document.querySelector(".results").innerHTML = "<p>No results available.</p>";
+        document.querySelector(".results").innerHTML = "<p>No results available in this date range.</p>";
         return;
     }
 
@@ -213,9 +233,10 @@ if (document.body.classList.contains('p-home')) {
     getStandings();
 } else if (document.body.classList.contains('p-schedule')) {
     getSchedule();
-} else if (document.body.classList.contains('p-results')) { // note the "p-results" match your body class
+} else if (document.body.classList.contains('p-results')) {
     getResults();
 }
+
 
 
 
