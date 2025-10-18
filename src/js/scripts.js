@@ -101,8 +101,8 @@ if (document.querySelector('.p-home')) {
 
 // ====== SCHEDULE PAGE ======
 function getSchedule() {
-    // Limit to September 1 - November 1, 2025
-    const endpoint = 'https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=2025-09-01&endDate=2025-11-01';
+    // Show the entire 2025 MLB season (regular + postseason)
+    const endpoint = 'https://statsapi.mlb.com/api/v1/schedule?sportId=1&startDate=2025-03-01&endDate=2025-11-01';
 
     fetch(endpoint)
         .then(res => res.json())
@@ -112,7 +112,7 @@ function getSchedule() {
 
 function showSchedule(dates) {
     if (!dates || dates.length === 0) {
-        document.querySelector(".schedule").innerHTML = "<p>No games scheduled for September through November 2025.</p>";
+        document.querySelector(".schedule").innerHTML = "<p>No games found for the 2025 season.</p>";
         return;
     }
 
@@ -153,6 +153,7 @@ function showSchedule(dates) {
 if (document.body.classList.contains('p-schedule')) {
     getSchedule();
 }
+
 
 
 
