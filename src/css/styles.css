@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #333;
@@ -81,7 +81,7 @@ button {
 
 .stories .item {
   border-bottom: 1px dashed #aaa;
-}
+} */
 
 
 
@@ -597,7 +597,7 @@ body {
 /* Keep nav centered within same width */
 nav ul {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: none;
   justify-content: center;
 }
 
@@ -606,4 +606,104 @@ main {
   padding: 1.5rem;
   text-align: center;
   background-color: lightgray;
+}
+
+/* --- Site Footer --- */
+.site-footer {
+  position: fixed;
+  /* keeps footer always visible */
+  bottom: 0;
+  /* sticks to bottom of screen */
+  left: 50%;
+  /* centers horizontally */
+  transform: translateX(-50%);
+  /* perfect centering */
+  width: min(1100px, 100%);
+  /* match your page width */
+  z-index: 1000;
+
+  background: linear-gradient(90deg, #003366, #002244);
+  color: #ffffff;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border-top: 4px solid #C8102E;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  /* background: linear-gradient(90deg, #003366, #002244);
+  color: #ffffff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+  border-top: 4px solid #C8102E;
+  font-family: Arial, sans-serif;
+  border-radius: 0 0 12px 12px; */
+}
+
+/* prevents page content from hiding behind footer */
+body {
+  padding-bottom: 110px;
+  /* roughly same height as footer */
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.site-footer .back-to-top {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #C8102E;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.site-footer .back-to-top:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Optional: Smooth scroll for "Back to Top" */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Site Footer (Aligned with Content) --- */
+.site-footer {
+  background: linear-gradient(90deg, #003366, #002244);
+  color: #ffffff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+  border-top: 4px solid #C8102E;
+  font-family: Arial, sans-serif;
+  border-radius: 0 0 12px 12px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.site-footer .back-to-top {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #C8102E;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.site-footer .back-to-top:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
 }
