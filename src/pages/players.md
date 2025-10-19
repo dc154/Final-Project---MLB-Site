@@ -3,6 +3,7 @@ layout: layout.html
 pageTitle: MLB Players
 pageClass: players
 navTitle: Players
+permalink: /players/
 navOrder: 4
 ---
 
