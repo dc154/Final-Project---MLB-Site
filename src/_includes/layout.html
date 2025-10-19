@@ -14,7 +14,8 @@
         <ul>
             {% assign sortedPages = collections.page | sort: "data.navOrder" %}
             {% for page in sortedPages %}
-            {% if page.data.navTitle == "Home" or page.data.navTitle == "Schedule" or page.data.navTitle == "Results" %}
+            {% if page.data.navTitle == "Home" or page.data.navTitle == "Schedule" or page.data.navTitle == "Results" or
+            page.data.navTitle == "Players" %}
             <li class="t-{{ page.data.pageClass }}">
                 <a href="{{ page.url | url }}">{{ page.data.navTitle }}</a>
             </li>
@@ -22,17 +23,6 @@
             {% endfor %}
         </ul>
     </nav>
-
-
-    <!-- <nav>
-        <ul>
-            {% for page in collections.page %}
-            <li class="t-{{page.data.pageClass}}">
-                <a href="{{ page.url | url }}">{{ page.data.navTitle}}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </nav> -->
 
 
     <h1>{{ pageTitle }}</h1>

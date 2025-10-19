@@ -87,24 +87,14 @@ button {
 
 
 /* Fianl Project MLB */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1em 0;
+main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
-
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 0.5em;
-  text-align: left;
-}
-
-h2 {
-  margin-top: 1em;
-  color: #003366;
-}
-
 
 /* --- Body and Page --- */
 body {
@@ -119,32 +109,43 @@ body {
 /* --- Navigation --- */
 nav {
   background-color: #003366;
-  /* MLB Blue */
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(90deg, #003366, #002244);
 }
 
 nav ul {
   display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  margin-right: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
 }
 
 nav ul li a {
-  color: #FFFFFF;
-  /* white text */
+  position: relative;
+  color: #fff;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #C8102E;
+  transition: width 0.3s ease;
 }
 
 nav ul li a:hover {
   color: #C8102E;
-  /* MLB Red on hover */
+}
+
+nav ul li a:hover::after {
+  width: 100%;
 }
 
 /* --- Headers --- */
@@ -153,10 +154,14 @@ h2 {
   font-family: 'Arial Black', sans-serif;
   color: #003366;
   /* MLB Blue */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   margin-top: 2rem;
+  font-weight: 800;
+  border-left: 4px solid #C8102E;
+  padding-left: 0.5rem;
 }
 
 /* --- Tables --- */
@@ -167,29 +172,69 @@ table {
   margin-bottom: 2rem;
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 th,
 td {
-  padding: 0.5rem;
+  padding: 0.6rem 0.8rem;
   text-align: left;
   border: 1px solid #E1E1E1;
 }
 
 th {
   background-color: #C8102E;
-  /* MLB Red header */
+  /* MLB Red */
   color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* --- Division / Date Blocks --- */
-.division,
-.date-block {
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background-color: #FFFFFF;
+tr:nth-child(even) {
+  background-color: #f7f9fc;
+  /* subtle striping */
+}
+
+tr:hover {
+  background-color: #eef3fa;
+  /* hover highlight */
+  transition: background 0.2s ease-in-out;
+}
+
+/* --- Equal Division Grid --- */
+.stories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+  /* Ensures even height cards */
+  margin-top: 1.5rem;
+}
+
+.division {
+  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  /* ✅ Equal heights */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.division:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.division table {
+  flex-grow: 1;
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
 }
 
 /* --- Schedule Postseason Highlight --- */
@@ -197,6 +242,120 @@ th {
   border-left: 5px solid #C8102E;
   /* MLB Red */
   padding-left: 1rem;
+}
+
+/* --- Players Grid --- */
+.players-grid {
+  max-width: 1100px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+  padding: 0 1rem;
+}
+
+.player-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.player-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #003366;
+  /* MLB Blue */
+  background: #f0f0f0;
+  margin-bottom: 0.5rem;
+}
+
+.player-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.player-name {
+  font-weight: 800;
+  font-size: 1rem;
+  color: #003366;
+  margin-bottom: 0.25rem;
+}
+
+.player-position {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.35rem;
+}
+
+.player-team {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.player-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  background: #f8f9fb;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 120px;
+}
+
+.player-stats div {
+  color: #222;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+/* --- Player Controls --- */
+.players-controls {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.players-controls label {
+  font-weight: 700;
+  color: #003366;
+  font-size: 1rem;
+}
+
+.players-controls select {
+  padding: 0.5rem 0.8rem;
+  border: 2px solid #003366;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #003366;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.players-controls select:hover {
+  border-color: #C8102E;
+  box-shadow: 0 0 5px rgba(200, 16, 46, 0.3);
 }
 
 /* --- Responsive --- */
@@ -207,5 +366,239 @@ th {
 
   nav ul li {
     margin-bottom: 1rem;
+  }
+
+  .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .player-card img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .players-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .players-controls select {
+    width: 100%;
+  }
+}
+
+/* === LEAGUE SIDE-BY-SIDE LAYOUT === */
+.league-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.league {
+  flex: 1 1 48%;
+  /* Half width each */
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.league h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #003366;
+  border-bottom: 3px solid #C8102E;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Division grid inside each league */
+.league .stories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 992px) {
+  .league .stories {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Responsive stacking for small screens */
+@media (max-width: 900px) {
+  .league-container {
+    flex-direction: column;
+  }
+
+  .league {
+    flex: 1 1 100%;
+  }
+}
+
+/* === MLB Standings League Layout === */
+
+/* Container for both leagues */
+/* .stories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+} */
+
+/* Each league box (AL on left, NL on right) */
+/* .league {
+  flex: 1 1 48%;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+} */
+
+/* .league h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #003366;
+  border-bottom: 3px solid #C8102E;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+} */
+
+/* Divisions within each league */
+/* .league .division {
+  margin-bottom: 1.5rem;
+  background: #f9fafc;
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+} */
+
+/* Tables inside division blocks */
+/* .league table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  background: #fff;
+}
+
+.league th {
+  background-color: #C8102E;
+  color: #fff;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.league td {
+  border: 1px solid #E1E1E1;
+  padding: 0.5rem;
+}
+
+/* Make it stack on smaller screens 
+@media (max-width: 900px) {
+  .stories {
+    flex-direction: column;
+  }
+
+  .league {
+    flex: 1 1 100%;
+  }
+} */
+
+/* === MLB Standings: American League on Top, National League Below === */
+
+.stories {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+/* Division boxes */
+.division {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.division:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Division headers */
+.division h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #003366;
+  border-bottom: 3px solid #C8102E;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Tables */
+.division table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.division th {
+  background-color: #C8102E;
+  color: #fff;
+  text-align: left;
+  padding: 0.6rem;
+}
+
+.division td {
+  border: 1px solid #E1E1E1;
+  padding: 0.5rem;
+}
+
+.division tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+
+/* --- League Headings --- */
+.division:nth-child(1)::before {
+  content: "American League";
+  display: block;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #003366;
+  margin-bottom: 1rem;
+}
+
+.division:nth-child(4)::before {
+  content: "National League";
+  display: block;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #003366;
+  margin: 2rem 0 1rem;
+  border-top: 4px solid #C8102E;
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stories {
+    padding: 0 1rem;
   }
 }
