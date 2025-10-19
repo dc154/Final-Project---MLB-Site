@@ -36,7 +36,6 @@
 
 //Final Projet MLB API
 
-// const apikey = "zSW2sRQaCoNIkI21eghtoa5Gf7kWN33A"
 // MLB API Endpoints
 const standingsEndpoint = "https://statsapi.mlb.com/api/v1/standings?leagueId=103,104";
 const scheduleEndpoint = "https://statsapi.mlb.com/api/v1/schedule?sportId=1";
