@@ -9,24 +9,30 @@
 </head>
 
 <body class="p-{{pageClass}}">
+    <div class="site-wrapper">
+        <nav>
+            <ul>
+                {% assign sortedPages = collections.page | sort: "data.navOrder" %}
+                {% for page in sortedPages %}
+                {% if page.data.navTitle == "Home" or page.data.navTitle == "Schedule" or page.data.navTitle ==
+                "Results" or
+                page.data.navTitle == "Players" %}
+                <li class="t-{{ page.data.pageClass }}">
+                    <a href="{{ page.url | url }}">{{ page.data.navTitle }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+        <header class="site-header">
+            <img src="/img/mlb-logo.png" alt="MLB Logo" class="mlb-logo">
+        </header>
 
-    <nav>
-        <ul>
-            {% assign sortedPages = collections.page | sort: "data.navOrder" %}
-            {% for page in sortedPages %}
-            {% if page.data.navTitle == "Home" or page.data.navTitle == "Schedule" or page.data.navTitle == "Results" or
-            page.data.navTitle == "Players" %}
-            <li class="t-{{ page.data.pageClass }}">
-                <a href="{{ page.url | url }}">{{ page.data.navTitle }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-    </nav>
-
-
-    <h1>{{ pageTitle }}</h1>
-    {{ content }}
+        <main>
+            <h1>{{ pageTitle }}</h1>
+            {{ content }}
+        </main>
+    </div>
 </body>
 <script src="/js/scripts.js"></script>
 
