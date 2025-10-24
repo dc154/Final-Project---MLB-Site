@@ -311,7 +311,7 @@ async function loadRoster(teamId) {
                 const position = item.position?.abbreviation || 'UNK';
                 const positionFull = item.position?.name || 'Unknown Position';
 
-                // ✅ Corrected: use abbreviation to detect pitchers
+                // Corrected: use abbreviation to detect pitchers
                 const isPitcher = position === 'P';
 
                 const img = pid ? headshotUrl(pid) : '';

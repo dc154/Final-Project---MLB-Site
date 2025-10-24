@@ -188,7 +188,6 @@ td {
 
 th {
   background-color: #C8102E;
-  /* MLB Red */
   color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -196,7 +195,6 @@ th {
 
 tr:nth-child(even) {
   background-color: #f7f9fc;
-  /* subtle striping */
 }
 
 tr:hover {
@@ -224,7 +222,7 @@ tr:hover {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  /* ✅ Equal heights */
+
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -243,7 +241,6 @@ tr:hover {
 /* --- Schedule Postseason Highlight --- */
 .date-block.postseason {
   border-left: 5px solid #C8102E;
-  /* MLB Red */
   padding-left: 1rem;
 }
 
@@ -280,7 +277,6 @@ tr:hover {
   height: 80px;
   border-radius: 50%;
   border: 3px solid #003366;
-  /* MLB Blue */
   background: #f0f0f0;
   margin-bottom: 0.5rem;
 }
@@ -404,7 +400,6 @@ tr:hover {
 
 .league {
   flex: 1 1 48%;
-  /* Half width each */
   background: #ffffff;
   border-radius: 10px;
   padding: 1rem;
@@ -578,7 +573,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* full viewport height */
   background-color: #f8f8f8;
 }
 
